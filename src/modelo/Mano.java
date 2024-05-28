@@ -50,7 +50,7 @@ cartas sumando los puntos de cada una.
      
 	}
 	
-	/**étodo pedirCarta(Mazo m) al que se le pasa un mazo de cartas,
+	/**método pedirCarta(Mazo m) al que se le pasa un mazo de cartas,
 	deberá solicitar una carta al mazo e incluirla en la mano.**/
 	
 	@Override
@@ -58,5 +58,17 @@ cartas sumando los puntos de cada una.
 		return "Mano [" + cartas + "] Valor de la mano:"+valorMano();
 	}
 	
+	
+	public void pedirCarta(Mazo baraja) throws NohayMasCartasException, Masde21Excetion, HayBlackjakeExcetion {
+		//recoge la carta que se encuentra en el princiopio del mazo
+		Carta c= baraja.solicitarCarta();
+		this.cartas.add(c);
+		if(valorMano()>21) {
+			throw new Masde21Excetion();
+		}
+		if(valorMano()==21) {
+			throw new HayBlackjakeExcetion();
+		}
+	}
 	
 }
